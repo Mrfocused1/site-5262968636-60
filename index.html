@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul Bridges — AI Business Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0a0a0f;
+--bg2:#111118;
+--accent:#6d5efc;
+--text:#eaeaf0;
+--muted:#9a9aa5;
+--border:rgba(255,255,255,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:'Inter',sans-serif;
+background:linear-gradient(180deg,#0a0a0f,#111118);
+color:var(--text);
+line-height:1.6;
+}
+h1,h2,h3{
+font-family:'Space Grotesk',sans-serif;
+letter-spacing:-0.02em;
+}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1200px;margin:auto}
+nav{
+position:fixed;top:0;left:0;width:100%;z-index:10;
+display:flex;justify-content:space-between;align-items:center;
+padding:20px 5%;
+transition:.3s;
+}
+nav.scrolled{
+background:rgba(10,10,15,0.7);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--border);
+}
+.logo{font-weight:700;letter-spacing:2px;font-size:14px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:var(--muted);font-size:14px}
+.btn{
+padding:10px 18px;border-radius:6px;
+border:1px solid var(--border);
+transition:.25s;
+}
+.btn.primary{
+background:var(--accent);
+border:none;color:white;
+}
+.btn.primary:hover{opacity:.85}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+.hero{
+min-height:100vh;
+display:flex;align-items:center;
+position:relative;
+overflow:hidden;
+}
+.hero::before{
+content:"";
+position:absolute;
+width:600px;height:600px;
+background:radial-gradient(circle,var(--accent),transparent 70%);
+top:10%;left:20%;
+opacity:.2;
+}
+.hero-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+.hero h1{
+font-size:56px;
+line-height:1.05;
+margin-bottom:20px;
+}
+.hero p{color:var(--muted);max-width:500px}
+.hero-buttons{margin-top:25px;display:flex;gap:15px;flex-wrap:wrap}
+.trust{margin-top:15px;font-size:13px;color:var(--muted)}
+.hero img{
+width:100%;border-radius:12px;
+filter:brightness(.9);
+}
+
+section{padding:100px 0}
+.eyebrow{color:var(--accent);font-size:12px;letter-spacing:1px;margin-bottom:10px}
+.about{
+display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.about img{width:100%;border-radius:12px}
+.stats{display:flex;gap:30px;margin-top:20px}
+.stat strong{display:block;font-size:22px}
+.stat span{font-size:12px;color:var(--muted)}
+
+.services .cards{
+display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:40px;
+}
+.card{
+border:1px solid var(--border);
+padding:25px;border-radius:12px;
+transition:.3s;
+background:rgba(255,255,255,0.01);
+}
+.card:hover{
+transform:translateY(-6px);
+border-color:rgba(109,94,252,0.6);
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+.card h3{margin-bottom:10px}
+.card p{color:var(--muted);font-size:14px;margin-bottom:10px}
+.card ul{font-size:13px;color:var(--muted);padding-left:15px}
+
+.testimonials{
+text-align:center;
+}
+.testimonial-grid{
+display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:40px;
+}
+.quote{
+border:1px solid var(--border);
+padding:25px;border-radius:12px;
+background:rgba(255,255,255,0.01);
+text-align:left;
+}
+.quote p{margin-bottom:15px}
+.quote span{font-size:13px;color:var(--muted)}
+
+.newsletter{
+text-align:center;
+}
+.news-box{
+margin:auto;
+max-width:600px;
+padding:40px;
+border-radius:14px;
+background:linear-gradient(#111118,#111118) padding-box,
+linear-gradient(135deg,rgba(109,94,252,0.5),transparent) border-box;
+border:1px solid transparent;
+}
+.news-box input{
+width:65%;padding:12px;
+background:#0a0a0f;border:1px solid var(--border);
+color:white;border-radius:6px;margin-right:10px;
+}
+footer{
+border-top:1px solid var(--border);
+padding:40px 0;
+font-size:14px;
+color:var(--muted);
+}
+.footer-grid{
+display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;
+}
+.socials{display:flex;gap:15px}
+
+@media(max-width:900px){
+.hero-content,.about,.services .cards,.testimonial-grid{
+grid-template-columns:1fr;
+}
+.hero h1{font-size:38px}
+.news-box input{width:100%;margin-bottom:10px}
+}
+</style>
+</head>
+
+<body>
+
+<nav id="nav">
+<div class="logo">PAUL BRIDGES</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#results">Results</a>
+<a href="#" class="btn primary">Book a Call</a>
+</div>
+</nav>
+
+<section class="hero container" data-hero>
+<div class="hero-content">
+<div>
+<h1>Turn AI Into Your Unfair Business Advantage.</h1>
+<p>I help ambitious founders, operators, and teams integrate AI into how they actually work — so they move faster, cut costs, and stay steps ahead of the competition.</p>
+<div class="hero-buttons">
+<a class="btn primary">Book a Strategy Call</a>
+<a class="btn ghost">Watch the Intro</a>
+</div>
+<div class="trust">Trusted by 200+ founders and teams worldwide.</div>
+</div>
+<div>
+<img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1200" alt="Paul Bridges portrait">
+</div>
+</div>
+</section>
+
+<section id="about" class="container" data-reveal>
+<div class="about">
+<img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200">
+<div>
+<div class="eyebrow">ABOUT PAUL</div>
+<h2>A decade in business. Obsessed with what AI changes next.</h2>
+<p>Paul Bridges is a business coach and AI strategist who has spent over 10 years helping companies scale operations, sharpen strategy, and adopt new technology without the hype. Today he works with founders and leadership teams to make AI a practical, profit-driving part of how they run — not a science project.</p>
+
+<div class="stats">
+<div class="stat"><strong data-count="10">10+</strong><span>yrs coaching</span></div>
+<div class="stat"><strong data-count="200">200+</strong><span>clients</span></div>
+<div class="stat"><strong data-count="50">50M+</strong><span>client growth</span></div>
+</div>
+
+<p style="margin-top:20px;">— Paul</p>
+</div>
+</div>
+</section>
+
+<section id="services" class="container services" data-reveal>
+<div class="eyebrow">WHAT I DO</div>
+<h2>Three ways I help you win with AI.</h2>
+
+<div class="cards">
+<div class="card">
+<h3>AI Strategy Sprint</h3>
+<p>A focused 4-week engagement to map your highest-impact AI opportunities and ship your first automations.</p>
+<ul>
+<li>Opportunity audit</li>
+<li>Prioritized roadmap</li>
+<li>First live automation</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>1:1 Executive Coaching</h3>
+<p>Ongoing coaching for founders and leaders building AI fluency and confidence into their decision-making.</p>
+<ul>
+<li>Weekly sessions</li>
+<li>Custom playbooks</li>
+<li>Accountability</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Team AI Enablement</h3>
+<p>Train your whole team to use AI tools safely and effectively in their daily work.</p>
+<ul>
+<li>Hands-on workshops</li>
+<li>Usage guidelines</li>
+<li>Adoption tracking</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="results" class="container testimonials" data-reveal>
+<div class="eyebrow">RESULTS</div>
+<h2>What clients say.</h2>
+
+<div class="testimonial-grid">
+<div class="quote">
+<p>"Paul didn't just teach us AI — he rebuilt how our team thinks about work. We shipped three automations in the first month and saved 40 hours a week."</p>
+<span>Sarah Chen, COO, Northwind Logistics</span>
+</div>
+
+<div class="quote">
+<p>"Within a sprint we had a roadmap that actually made sense. Paul cuts through the noise like nobody else."</p>
+<span>Marcus Reid, Founder, Vantage Studio</span>
+</div>
+
+<div class="quote">
+<p>"I finally feel ahead of the curve instead of chasing it. Best investment we made this year."</p>
+<span>Elena Flores, CEO, Brightline Retail</span>
+</div>
+</div>
+</section>
+
+<section class="newsletter container" data-pin>
+<div class="news-box">
+<h2>Get the AI Edge — weekly.</h2>
+<p style="color:var(--muted);margin:10px 0 20px;">One practical email every week on using AI to grow your business. No fluff, no hype. Unsubscribe anytime.</p>
+<input type="email" placeholder="Your email">
+<a class="btn primary">Subscribe</a>
+</div>
+</section>
+
+<footer>
+<div class="container footer-grid">
+<div>
+<strong>PAUL BRIDGES</strong><br>
+<span>AI-powered business coaching.</span>
+</div>
+
+<div>
+<a href="#about">About</a> |
+<a href="#services">Services</a> |
+<a href="#results">Results</a> |
+<a href="#">Contact</a>
+</div>
+
+<div class="socials">
+<span>LinkedIn</span>
+<span>X</span>
+<span>YouTube</span>
+</div>
+</div>
+
+<div style="text-align:center;margin-top:20px;">
+© 2025 Paul Bridges. All rights reserved.
+</div>
+</footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+document.getElementById("nav").classList.toggle("scrolled",window.scrollY>20);
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+// hero-entrance: staggered fade-up of [data-hero] children on load
+(() => {
+  gsap.matchMedia().add({ reduce: "(prefers-reduced-motion: reduce)" }, (ctx) => {
+    const reduce = ctx.conditions.reduce;
+    const targets = gsap.utils.toArray("[data-hero] > *");
+    if (!targets.length) return;
+    gsap.from(targets, {
+      autoAlpha: 0,
+      y: reduce ? 0 : 30,
+      duration: reduce ? 0 : 0.8,
+      ease: "power3.out",
+      stagger: reduce ? 0 : 0.12,
+    });
+  });
+})();
+
+// scroll-reveal: fade/slide [data-reveal] elements in as they enter the viewport.
+// Fail-safe: per-element from()+ScrollTrigger reliably reveals in-view content,
+// and a load-time refresh + a safety timeout guarantee nothing stays hidden.
+(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.matchMedia().add({ reduce: "(prefers-reduced-motion: reduce)" }, (ctx) => {
+    const items = gsap.utils.toArray("[data-reveal]");
+    if (!items.length) return;
+    if (ctx.conditions.reduce) { gsap.set(items, { autoAlpha: 1, y: 0 }); return; }
+    items.forEach((el) => {
+      gsap.from(el, {
+        autoAlpha: 0,
+        y: 40,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    });
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+    // Safety net: if anything is still invisible 3.5s in, force it visible.
+    setTimeout(() => {
+      items.forEach((el) => {
+        if (Number(gsap.getProperty(el, "autoAlpha")) === 0) gsap.set(el, { autoAlpha: 1, y: 0 });
+      });
+    }, 3500);
+  });
+})();
+
+// pinned-section: pin [data-pin] and reveal its children while pinned (desktop only)
+(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.matchMedia().add(
+    {
+      isDesktop: "(min-width: 768px)",
+      reduce: "(prefers-reduced-motion: reduce)",
+    },
+    (ctx) => {
+      const { isDesktop, reduce } = ctx.conditions;
+      const section = document.querySelector("[data-pin]");
+      if (!section || !isDesktop || reduce) return; // skip pin on mobile / reduced motion
+      const items = section.querySelectorAll(":scope > *");
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "+=80%",
+            pin: true,
+            scrub: 1,
+          },
+        })
+        .from(items, { autoAlpha: 0, y: 50, stagger: 0.2, ease: "none" });
+    }
+  );
+})();
+
+// parallax: drift [data-parallax] layers slower than the page as it scrolls
+(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.matchMedia().add({ reduce: "(prefers-reduced-motion: reduce)" }, (ctx) => {
+    if (ctx.conditions.reduce) return; // no parallax for reduced motion
+    gsap.utils.toArray("[data-parallax]").forEach((layer) => {
+      const depth = parseFloat(layer.getAttribute("data-parallax")) || 0.3;
+      gsap.to(layer, {
+        yPercent: -depth * 100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: layer,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+  });
+})();
+
+// counter: count [data-count] up to its target number when it scrolls into view
+(() => {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.matchMedia().add({ reduce: "(prefers-reduced-motion: reduce)" }, (ctx) => {
+    gsap.utils.toArray("[data-count]").forEach((el) => {
+      const target = parseFloat(el.getAttribute("data-count")) || 0;
+      if (ctx.conditions.reduce) { el.textContent = String(target); return; }
+      const obj = { v: 0 };
+      gsap.to(obj, {
+        v: target,
+        ease: "power1.out",
+        duration: 2,
+        scrollTrigger: { trigger: el, start: "top 85%", once: true },
+        onUpdate: () => { el.textContent = Math.round(obj.v).toLocaleString(); },
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
